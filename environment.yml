@@ -1,0 +1,24 @@
+name: rfantibody
+channels:
+  - dglteam/label/cu118
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch=2.3.*
+  - torchvision=0.18.*
+  - torchaudio=2.3.*
+  - pytorch-cuda=11.8
+  - dgl=2.4.*
+  - numpy=1.26.*
+  - pip
+  - pip:
+      - cuda-python==11.8.0
+      - hydra-core
+      - icecream
+      - opt-einsum
+      - e3nn
+      - pyrsistent
+      - torch-utils

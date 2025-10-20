@@ -12,9 +12,13 @@ import os
 import sys
 import subprocess
 import re
-import torch
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
 
 if not os.path.exists('example_outputs'):
+
+    import torch
 
     # Check if cuda is available
     if not torch.cuda.is_available():
@@ -60,6 +64,7 @@ for ref in ref_output_files:
         continue
 
     reffile = f'reference_outputs/{ref}'
+    ref_base = os.path.basename(reffile)
 
     # Get the corresponding output file
     output_file = 'example_outputs/' + ref
