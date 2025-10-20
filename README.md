@@ -118,7 +118,11 @@ While the Docker-based workflow above remains the recommended way to get started
    make -C include/USalign
    ```
 
-   The `environment.yml` installs the CUDA 11.8 builds of PyTorch and DGL (`dgl-cu118`). Ensure that your system drivers are compatible with CUDA 11.8 before proceeding.
+   The `environment.yml` installs the CUDA 11.8 builds of PyTorch and DGL by pulling `dgl` from the `dglteam/label/cu118` conda channel. Ensure that your site allows access to this channel and that your system drivers are compatible with CUDA 11.8 before proceeding. If external channels are blocked on your cluster, install DGL manually after creating the environment with:
+
+   ```bash
+   python -m pip install "dgl==2.4.0+cu118" -f https://data.dgl.ai/wheels/cu118/repo.html
+   ```
 
 3. Download the model weights (same as for the Docker workflow):
 
