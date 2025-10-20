@@ -100,6 +100,34 @@ This does the following:
 - Use [Python Poetry](https://python-poetry.org) to build the Python environment
 - Build the [USalign](https://github.com/pylelab/USalign) executable
 
+## (Alternative) Installing with Conda Instead of Docker
+
+While the Docker-based workflow above remains the recommended way to get started quickly, you can also set up RFantibody directly on a CUDA-enabled host using [conda](https://docs.conda.io/en/latest/). The repository provides an `environment.yml` file that mirrors the dependencies installed inside the Docker image.
+
+1. Create and activate the conda environment:
+
+   ```bash
+   conda env create -f environment.yml
+   conda activate rfantibody
+   ```
+
+2. Build the RFantibody Python package and its helpers:
+
+   ```bash
+   pip install -e .
+   make -C include/USalign
+   ```
+
+   The `environment.yml` installs the CUDA 11.8 builds of PyTorch and DGL (`dgl-cu118`). Ensure that your system drivers are compatible with CUDA 11.8 before proceeding.
+
+3. Download the model weights (same as for the Docker workflow):
+
+   ```bash
+   bash include/download_weights.sh
+   ```
+
+With the environment activated you can run the commands in the rest of this README directly (replace `poetry run` prefixes with a plain `python` invocation when running inside the conda environment).
+
 # Usage
 
 ## HLT File Format
